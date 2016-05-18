@@ -7,8 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#import "MainThreadRunLoopSource.h"
+#import "MainThreadRunLoopSourceContext.h"
+#import "SecondaryThreadRunLoopSource.h"
+#import "SecondaryThreadRunLoopSourceContext.h"
+#import "MainCollectionVC.h"
+
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) MainThreadRunLoopSourceContext *mainContext;
+@property (nonatomic, strong) SecondaryThreadRunLoopSourceContext *secondContext;
 
 @end
 
@@ -43,6 +52,71 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
+#pragma mark - MainThreadRunLoopSource 
+- (void)registerMainThreadRunLoopSource:(MainThreadRunLoopSourceContext *)mainThreadRunLoopSourceContext {
+    self.mainContext = mainThreadRunLoopSourceContext;
+}
+
+
+- (void)performMainThreadRunLoopSourceTask {
+    
+    if (self.mainContext.runloopSource.commandBuffer.count > 0) {
+        [self.mainContext.runloopSource.commandBuffer removeAllObjects];
+    }
+    
+    [self.mainCollectionVC.collectionView reloadData];
+    
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(sendCommandToSecondaryThread) userInfo:nil repeats:NO];
+    
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+}
+
+
+#pragma mark - SecondThreadRunLoopSource
+
+- (void)registerSecondaryThreadRunLoopSource:(SecondaryThreadRunLoopSourceContext *)secondThreadRunLoopSourceContext {
+    
+    self.secondContext = secondThreadRunLoopSourceContext;
+    
+    [self sendCommandToSecondaryThread];
+}
+
+- (void)sendCommandToSecondaryThread {
+    [self.secondContext.runloopSource.commandBuffer addObject:self.mainContext];
+    
+    [self.secondContext.runloopSource signalSourceAndWakeUpRunloop:self.secondContext.runloop];
+    
+}
+
+- (void)performSecondaryThreadRunLoopSourceTask {
+    if (self.secondContext.runloopSource.commandBuffer.count > 0) {
+        
+        [self.mainCollectionVC randomAlpha];
+        
+        MainThreadRunLoopSourceContext *mainTmpContext = self.secondContext.runloopSource.commandBuffer[0];
+        [self.secondContext.runloopSource.commandBuffer removeAllObjects];
+        
+        [mainTmpContext.runloopSource.commandBuffer addObject:self.secondContext];
+        
+        [mainTmpContext.runloopSource signalSourceAndWakeUpRunloop:mainTmpContext.runloop];
+        
+    }
+}
+
+- (void)removeMainThreadRunloopSourceContext {
+    self.mainContext = nil;
+}
+
+- (void)removeSecondaryThreadRunloopSourceContext {
+    self.secondContext = nil;
+}
+
+
+
+
+
+
 
 #pragma mark - Core Data stack
 

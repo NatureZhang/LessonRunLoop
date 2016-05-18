@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainCollectionVC">
+            <connections>
+                <outlet property="collectionView" destination="wY9-yB-nds" id="Jzb-0c-V7U"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wY9-yB-nds">
+                    <rect key="frame" x="50" y="84" width="500" height="416"/>
+                    <color key="backgroundColor" red="0.70868821810000004" green="0.96350160259999995" blue="0.81170453760000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7NR-GH-Sw1">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="45O-Da-Zbf"/>
+                        <outlet property="delegate" destination="-1" id="Vzi-9r-Qgw"/>
+                    </connections>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEE-bc-U1f">
+                    <rect key="frame" x="450" y="557" width="100" height="30"/>
+                    <color key="backgroundColor" red="0.56279708530000006" green="0.89599373999999998" blue="0.99783653849999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="155" id="r2Z-PM-NUl"/>
+                    </constraints>
+                    <state key="normal" title="cancel"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="r2Z-PM-NUl"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="cancelRandom:" destination="-1" eventType="touchUpInside" id="gQ5-0i-dJa"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfV-nO-Mb1">
+                    <rect key="frame" x="50" y="557" width="100" height="30"/>
+                    <color key="backgroundColor" red="0.56279708530000006" green="0.89599373999999998" blue="0.99783653849999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="L1a-gr-QEw"/>
+                    </constraints>
+                    <state key="normal" title="start"/>
+                    <connections>
+                        <action selector="startRandom:" destination="-1" eventType="touchUpInside" id="nMu-Ek-zsp"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.70868821807245552" green="0.96350160256410255" blue="0.8117045376151717" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="nfV-nO-Mb1" secondAttribute="bottom" constant="13" id="0ls-8D-Jj8"/>
+                <constraint firstItem="wY9-yB-nds" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="4Ir-p0-4wZ"/>
+                <constraint firstAttribute="trailing" secondItem="dEE-bc-U1f" secondAttribute="trailing" constant="50" id="RUX-QH-xfv"/>
+                <constraint firstItem="wY9-yB-nds" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="cSn-35-5fe"/>
+                <constraint firstItem="nfV-nO-Mb1" firstAttribute="width" secondItem="dEE-bc-U1f" secondAttribute="width" id="fmr-hc-bNv"/>
+                <constraint firstItem="nfV-nO-Mb1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="wOf-xX-e06"/>
+                <constraint firstAttribute="bottom" secondItem="dEE-bc-U1f" secondAttribute="bottom" constant="13" id="xx5-W4-EU1"/>
+                <constraint firstAttribute="bottom" secondItem="wY9-yB-nds" secondAttribute="bottom" constant="100" id="yJS-4h-ks1"/>
+                <constraint firstAttribute="trailing" secondItem="wY9-yB-nds" secondAttribute="trailing" constant="50" id="z0M-ZW-isN"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
