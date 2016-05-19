@@ -117,11 +117,11 @@
 		D9EA14351CEC501600E601B9 /* CustomSource */ = {
 			isa = PBXGroup;
 			children = (
+				D9F47CEA1CEDAFFC0067C8BF /* RunLoopDelegate.h */,
+				D9F47CEB1CEDAFFC0067C8BF /* RunLoopDelegate.m */,
 				D9EA14231CEC08B200E601B9 /* MainCollectionVC.h */,
 				D9EA14241CEC08B200E601B9 /* MainCollectionVC.m */,
 				D9EA14251CEC08B200E601B9 /* MainCollectionVC.xib */,
-				D9F47CEA1CEDAFFC0067C8BF /* RunLoopDelegate.h */,
-				D9F47CEB1CEDAFFC0067C8BF /* RunLoopDelegate.m */,
 				D9EA14281CEC08CD00E601B9 /* MainThreadRunLoopSource.h */,
 				D9EA14291CEC08CD00E601B9 /* MainThreadRunLoopSource.m */,
 				D9EA142B1CEC08ED00E601B9 /* MainThreadRunLoopSourceContext.h */,
