@@ -11,8 +11,6 @@
 
 @interface MainThreadRunLoopSourceContext ()
 
-
-
 @end
 
 @implementation MainThreadRunLoopSourceContext

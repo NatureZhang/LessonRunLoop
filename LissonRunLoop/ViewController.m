@@ -13,6 +13,8 @@
 
 // http://www.devtalking.com/articles/read-threading-programming-guide-2/
 
+// 更全的学习资料整理 http://www.jianshu.com/p/033087def3a4
+
 /*
  什么是runloop
  顾名思义就是跑圈，兜圈的意思，一个应用程序能够一直运行而不退出就是基于这种机制
@@ -135,6 +137,21 @@
  又说：基于端口的输入源主动触发runloop http://www.devtalking.com/articles/read-threading-programming-guide-2/
  
  通过AFN的源码，可知后者对
+ */
+
+/*
+ 退出runloop
+ 1  启动runloop时设置超时时间
+ 2  强制退出runloop
+ 3  移除runloop中的事件源，从而使runloop退出，不推荐这种方式
+ */
+
+/*
+ runloop 对象线程安全性
+ Core Foundation框架中的CFRunLoop对象是线程安全的，我们可以在任何线程中使用
+ Cocoa 框架的NSRunloop对象是线程不安全的，必须在拥有runloop的当前线程中操作runloop。
+ 
+ 
  */
 
 

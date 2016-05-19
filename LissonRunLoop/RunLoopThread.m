@@ -49,6 +49,7 @@
         //  第三个参数：YES持续监听 NO 只监听一次
         //  第四个参数：观察者优先级，当runloop中有多个观察者监听同一个运行状态时，根据该优先级判断，0为最高级别
         //  第五个参数：观察者的回调函数 函数指针 当发现runloop状态改变的时候会调用该方法
+        //  (*CFRunLoopObserverCallBack)(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info);第一个是触发监听的观察者、第二个参数是观察者监听的runloop运行状态，第三个参数是观察者运行上下文环境
         //  第六个参数：观察者上下文环境
         CFRunLoopObserverRef observerRef = CFRunLoopObserverCreate(kCFAllocatorDefault, kCFRunLoopAllActivities, YES, 0, &myRunLoopObserver, &context);
         
@@ -73,6 +74,7 @@
         while (loopCount) {
             // 启动runloop开始循环，直到指定的时间才结束
             // 当调用runUnitDate方法时，观察者检测到循环已经启动，开始根据你循环的各个阶段的事件，调用回调函数
+            // 设置runloop的运行时长
             [myRunloop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
             // 执行完之后，会再一次调用回调函数，状态是KCFRunLoopExit，表示结束
             

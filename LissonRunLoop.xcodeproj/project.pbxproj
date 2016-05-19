@@ -13,6 +13,7 @@
 		D9EA142D1CEC08ED00E601B9 /* MainThreadRunLoopSourceContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EA142C1CEC08ED00E601B9 /* MainThreadRunLoopSourceContext.m */; };
 		D9EA14301CEC090D00E601B9 /* SecondaryThreadRunLoopSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EA142F1CEC090D00E601B9 /* SecondaryThreadRunLoopSource.m */; };
 		D9EA14331CEC092600E601B9 /* SecondaryThreadRunLoopSourceContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EA14321CEC092600E601B9 /* SecondaryThreadRunLoopSourceContext.m */; };
+		D9F47CEC1CEDAFFC0067C8BF /* RunLoopDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F47CEB1CEDAFFC0067C8BF /* RunLoopDelegate.m */; };
 		D9FAB1E81CEB1B12008BDA0D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FAB1E71CEB1B12008BDA0D /* main.m */; };
 		D9FAB1EB1CEB1B12008BDA0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FAB1EA1CEB1B12008BDA0D /* AppDelegate.m */; };
 		D9FAB1EE1CEB1B12008BDA0D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FAB1ED1CEB1B12008BDA0D /* ViewController.m */; };
@@ -55,6 +56,8 @@
 		D9EA142F1CEC090D00E601B9 /* SecondaryThreadRunLoopSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryThreadRunLoopSource.m; sourceTree = "<group>"; };
 		D9EA14311CEC092600E601B9 /* SecondaryThreadRunLoopSourceContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondaryThreadRunLoopSourceContext.h; sourceTree = "<group>"; };
 		D9EA14321CEC092600E601B9 /* SecondaryThreadRunLoopSourceContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryThreadRunLoopSourceContext.m; sourceTree = "<group>"; };
+		D9F47CEA1CEDAFFC0067C8BF /* RunLoopDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLoopDelegate.h; sourceTree = "<group>"; };
+		D9F47CEB1CEDAFFC0067C8BF /* RunLoopDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLoopDelegate.m; sourceTree = "<group>"; };
 		D9FAB1E31CEB1B12008BDA0D /* LissonRunLoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LissonRunLoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FAB1E71CEB1B12008BDA0D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D9FAB1E91CEB1B12008BDA0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 				D9EA14231CEC08B200E601B9 /* MainCollectionVC.h */,
 				D9EA14241CEC08B200E601B9 /* MainCollectionVC.m */,
 				D9EA14251CEC08B200E601B9 /* MainCollectionVC.xib */,
+				D9F47CEA1CEDAFFC0067C8BF /* RunLoopDelegate.h */,
+				D9F47CEB1CEDAFFC0067C8BF /* RunLoopDelegate.m */,
 				D9EA14281CEC08CD00E601B9 /* MainThreadRunLoopSource.h */,
 				D9EA14291CEC08CD00E601B9 /* MainThreadRunLoopSource.m */,
 				D9EA142B1CEC08ED00E601B9 /* MainThreadRunLoopSourceContext.h */,
@@ -331,6 +336,7 @@
 				D9FAB2401CEB28BD008BDA0D /* RunLoopThread.m in Sources */,
 				D9FAB1EE1CEB1B12008BDA0D /* ViewController.m in Sources */,
 				D9EA142D1CEC08ED00E601B9 /* MainThreadRunLoopSourceContext.m in Sources */,
+				D9F47CEC1CEDAFFC0067C8BF /* RunLoopDelegate.m in Sources */,
 				D9FAB1F41CEB1B12008BDA0D /* LissonRunLoop.xcdatamodeld in Sources */,
 				D9EA14261CEC08B200E601B9 /* MainCollectionVC.m in Sources */,
 				D9EA142A1CEC08CD00E601B9 /* MainThreadRunLoopSource.m in Sources */,

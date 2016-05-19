@@ -10,16 +10,24 @@
 #import "AppDelegate.h"
 #import "MainThreadRunLoopSource.h"
 #import "SecondaryThreadRunLoopSource.h"
-
+#import "RunLoopDelegate.h"
 
 static NSString *const collectionCellId = @"collectionCellId";
 static NSInteger collectionCellNum = 32;
 @interface MainCollectionVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSMutableArray *alphaArray;
+@property (nonatomic, strong) SecondaryThreadRunLoopSource *secondSource;
+@property (nonatomic, strong) MainThreadRunLoopSource *mainSource;
+
 @end
 
 @implementation MainCollectionVC
+
+- (void)dealloc
+{
+    NSLog(@"MainCollectionVC dealloc");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,9 +42,8 @@ static NSInteger collectionCellNum = 32;
 - (void)layoutCollectionView {
     
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:collectionCellId];
-    
-    AppDelegate *appDelgt = [UIApplication sharedApplication].delegate;
-    appDelgt.mainCollectionVC = self;
+    [RunLoopDelegate shareDelegate].mainCollectionVC = self;
+
 }
 
 #pragma mark - 辅助函数
@@ -52,8 +59,8 @@ static NSInteger collectionCellNum = 32;
 }
 - (IBAction)startRandom:(id)sender {
     
-    MainThreadRunLoopSource *mainRunLoopSource = [[MainThreadRunLoopSource alloc] init];
-    [mainRunLoopSource addToCurrentRunLoop];
+    _mainSource = [[MainThreadRunLoopSource alloc] init];
+    [_mainSource addToCurrentRunLoop];
     
     NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(startThreadWithRunloop) object:nil];
     [thread start];
@@ -63,13 +70,13 @@ static NSInteger collectionCellNum = 32;
     @autoreleasepool {
         
         BOOL done = NO;
-        SecondaryThreadRunLoopSource *secondSource = [[SecondaryThreadRunLoopSource alloc] init];
-        [secondSource addToCurrentRunLoop];
+        _secondSource = [[SecondaryThreadRunLoopSource alloc] init];
+        [_secondSource addToCurrentRunLoop];
         
         while (!done) {
             CFRunLoopRunResult result =  CFRunLoopRunInMode(kCFRunLoopDefaultMode, 5, true);
             
-            if (result == kCFRunLoopRunStopped || result == kCFRunLoopRunFinished) {
+            if (result == kCFRunLoopRunStopped || result == kCFRunLoopRunFinished || result == kCFRunLoopRunTimedOut) {
                 done = true;
             }
         
@@ -78,8 +85,9 @@ static NSInteger collectionCellNum = 32;
     }
 }
 
-
 - (IBAction)cancelRandom:(id)sender {
+    
+    [_mainSource stopCurrentRunLoop];
 }
 
 #pragma mark - UICollectionViewDataSource

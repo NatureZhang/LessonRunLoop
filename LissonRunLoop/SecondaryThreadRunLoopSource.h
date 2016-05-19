@@ -17,4 +17,6 @@
 - (void)signalSourceAndWakeUpRunloop:(CFRunLoopRef)runloop ;
 
 - (void)addToCurrentRunLoop;
+
+- (void)stopCurrentRunLoop;
 @end
